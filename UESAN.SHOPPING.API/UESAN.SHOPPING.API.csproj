@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\UESAN.SHOPPING.CORE\UESAN.SHOPPING.CORE.csproj" />
   </ItemGroup>
 

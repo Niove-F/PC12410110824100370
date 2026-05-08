@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using UESAN.SHOPPING.CORE.Core.Interfaces;
 using UESAN.SHOPPING.CORE.Infrastructure.Data;
+using UESAN.SHOPPING.CORE.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ var _config = builder.Configuration;
 var cnx = _config.GetConnectionString("DevConnection");
 builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseSqlServer(cnx));
+
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 
 builder.Services.AddControllers();
