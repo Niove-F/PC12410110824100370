@@ -41,5 +41,12 @@ namespace UESAN.SHOPPING.API.Controllers
             await _categoryRepository.UpdateCategory(category);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            await _categoryRepository.DeleteCategory(id);
+            return Ok();
+        }
     }
 }
