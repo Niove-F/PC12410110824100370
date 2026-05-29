@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PC1.DAW.CORE.Core.Interfaces;
+using PC1.DAW.CORE.Core.Services;
 using PC1.DAW.CORE.Infrastructure.Data;
 using PC1.DAW.CORE.Infrastructure.Repositories;
 
@@ -8,10 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var _config = builder.Configuration;
 var cnx = _config.GetConnectionString("DevConnection");
-builder.Services.AddDbContext<StoreDbContext>(options =>
+builder.Services.AddDbContext<TallerDbContext>(options =>
     options.UseSqlServer(cnx));
 
-builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+// Register OrdenServicio Repository and Service
+builder.Services.AddTransient<IOrdenServicioRepository, OrdenServicioRepository>();
+builder.Services.AddTransient<IOrdenServicioService, OrdenServicioService>();
 
 
 builder.Services.AddControllers();
