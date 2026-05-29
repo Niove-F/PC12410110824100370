@@ -1,36 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using UESAN.SHOPPING.CORE.Core.Entities;
+using PC1.DAW.CORE.Core.Entities;
 
-namespace UESAN.SHOPPING.CORE.Infrastructure.Data;
+namespace PC1.DAW.CORE.Infrastructure.Data;
 
-public partial class StoreDbContext : DbContext
+public partial class TallerDbContext : DbContext
 {
-    public StoreDbContext()
+    public TallerDbContext()
     {
     }
 
-    public StoreDbContext(DbContextOptions<StoreDbContext> options)
+    public TallerDbContext(DbContextOptions<TallerDbContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<Category> Category { get; set; }
+    public virtual DbSet<Cliente> Cliente { get; set; }
 
-    public virtual DbSet<Favorite> Favorite { get; set; }
+    public virtual DbSet<OrdenServicio> OrdenServicio { get; set; }
 
-    public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+    public virtual DbSet<TipoServicio> TipoServicio { get; set; }
 
-    public virtual DbSet<Orders> Orders { get; set; }
-
-    public virtual DbSet<Payment> Payment { get; set; }
-
-    public virtual DbSet<Product> Product { get; set; }
-
-    public virtual DbSet<ProductDetail> ProductDetail { get; set; }
-
-    public virtual DbSet<User> User { get; set; }
+    public virtual DbSet<Vehiculo> Vehiculo { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -38,17 +30,24 @@ public partial class StoreDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Category>(entity =>
+        modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.Property(e => e.Description).HasMaxLength(100);
+            entity.Property(e => e.Nombre).HasMaxLength(50);
+            entity.Property(e => e.ApellidoPaterno).HasMaxLength(50);
+            entity.Property(e => e.ApellidoMaterno).HasMaxLength(50);
+            entity.Property(e => e.Correo).HasMaxLength(50);
+            entity.Property(e => e.Telefono).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<Favorite>(entity =>
+        modelBuilder.Entity<OrdenServicio>(entity =>
         {
-            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.FechaIngreso).HasColumnType("datetime");
+            entity.Property(e => e.DescripcionProblema).HasMaxLength(200);
+            entity.Property(e => e.CostoEstimado).HasColumnType("float");
+            entity.Property(e => e.Estado).HasMaxLength(10);
 
-            entity.HasOne(d => d.Product).WithMany(p => p.Favorite)
-                .HasForeignKey(d => d.ProductId)
+            entity.HasOne(d => d.Vehiculo).WithMany(p => p.OrdenServicio)
+                .HasForeignKey(d => d.ID_V)
                 .HasConstraintName("FK_Favorite_Product");
 
             entity.HasOne(d => d.User).WithMany(p => p.Favorite)
