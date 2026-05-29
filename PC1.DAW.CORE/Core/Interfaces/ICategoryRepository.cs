@@ -1,6 +1,6 @@
-﻿using UESAN.SHOPPING.CORE.Core.Entities;
+﻿using PC1.DAW.CORE.Core.Entities;
 
-namespace UESAN.SHOPPING.CORE.Core.Interfaces
+namespace PC1.DAW.CORE.Core.Interfaces
 {
     public interface ICategoryRepository
     {

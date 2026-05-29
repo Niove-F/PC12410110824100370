@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PC1.DAW.API/PC1.DAW.API.csproj" />
+  <Project Path="PC1.DAW.CORE/PC1.DAW.CORE.csproj" />
+</Solution>

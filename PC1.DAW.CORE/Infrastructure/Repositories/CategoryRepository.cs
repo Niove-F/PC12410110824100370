@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UESAN.SHOPPING.CORE.Core.Entities;
-using UESAN.SHOPPING.CORE.Infrastructure.Data;
+using PC1.DAW.CORE.Core.Entities;
+using PC1.DAW.CORE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using UESAN.SHOPPING.CORE.Core.Interfaces;
+using PC1.DAW.CORE.Core.Interfaces;
 
-namespace UESAN.SHOPPING.CORE.Infrastructure.Repositories
+namespace PC1.DAW.CORE.Infrastructure.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {

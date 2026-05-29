@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using UESAN.SHOPPING.CORE.Core.Interfaces;
-using UESAN.SHOPPING.CORE.Infrastructure.Data;
-using UESAN.SHOPPING.CORE.Infrastructure.Repositories;
+using PC1.DAW.CORE.Core.Interfaces;
+using PC1.DAW.CORE.Infrastructure.Data;
+using PC1.DAW.CORE.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
