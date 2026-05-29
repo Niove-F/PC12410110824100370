@@ -1,0 +1,4 @@
+1.- No se reconocio correctamente ninguna carpeta, verificar si se creo correctamente la base de datos, o el comando estaba bien escrito.
+2.- Toma menos tiempo en conectar con scaffolding, el de un controlador autogenerado.
+3.- Respetar las mayusculas y minisculas en cada linea de codigo para no confundirme con las variables.
+4.- Claude y Gemini, en el renombramiento de las carpetas, para facilitar esa parte del trabajo.
