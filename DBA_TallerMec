@@ -1,0 +1,38 @@
+CREATE DATABASE TallerMec;
+Use TallerMec;
+
+CREATE TABLE Cliente ( 
+	ID INT IDENTITY(1,1) PRIMARY KEY, 
+	Nombre NVARCHAR(50), 
+	ApellidoPaterno NVARCHAR(50), 
+	ApellidoMaterno NVARCHAR(50), 
+	Correo NVARCHAR(100), 
+	Telefono NVARCHAR(20) 
+);
+
+CREATE TABLE TipoServicio ( 
+	ID_TS INT IDENTITY(1,1) PRIMARY KEY, 
+	Nombre NVARCHAR(50), 
+	PrecioBase float
+);
+CREATE TABLE Vehiculo ( 
+	ID_V INT IDENTITY(1,1) PRIMARY KEY, 
+	Placa NVARCHAR(50), 
+	Marca NVARCHAR(50),
+	Modelo NVARCHAR(50),
+	Año NVARCHAR (4),
+	ID_Cliente int null,
+	CONSTRAINT FK_VC FOREIGN KEY (ID_Cliente) REFERENCES Cliente(ID)
+);
+Create TABLE OrdenServicio(
+	ID_OS INT IDENTITY(1,1) PRIMARY KEY,
+	FechaIngreso datetime,
+	DescripcionProblema NVARCHAR(200),
+	CostoEstimado float,
+	Estado NVARCHAR(10),
+	ID_V int null,
+	ID_TS int null,
+	CONSTRAINT FK_OSV FOREIGN KEY (ID_V) REFERENCES Vehiculo(ID_V),
+	CONSTRAINT FK_OSTS FOREIGN KEY (ID_TS) REFERENCES TipoServicio(ID_TS)
+);
+
